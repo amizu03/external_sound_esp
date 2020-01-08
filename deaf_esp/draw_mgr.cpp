@@ -104,7 +104,7 @@ void c_draw_mgr::gradient_box_outlined( int x, int y, int width, int height, int
 
 void c_draw_mgr::circle( int x, int y, int radius, int points, DWORD color ) {
 	vertex* vtx = new vertex[ points + 1 ];
-	for ( int i = 0; i <= points; i++ ) vtx[ i ] = { x + radius * cos( D3DX_PI * ( i / ( points / 2.0f ) ) ), y - radius * sin( D3DX_PI * ( i / ( points / 2.0f ) ) ), 0.0f, 1.0f, color };
+	for ( int i = 0; i <= points; i++ ) vtx[ i ] = { x + radius * cosf( D3DX_PI * ( i / ( points / 2.0f ) ) ), y - radius * sinf( D3DX_PI * ( i / ( points / 2.0f ) ) ), 0.0f, 1.0f, color };
 	this->device->SetFVF( D3DFVF_XYZRHW | D3DFVF_DIFFUSE );
 	this->device->DrawPrimitiveUP( D3DPT_LINESTRIP, points, vtx, sizeof( vertex ) );
 	delete [ ] vtx;
@@ -112,7 +112,7 @@ void c_draw_mgr::circle( int x, int y, int radius, int points, DWORD color ) {
 
 void c_draw_mgr::filled_circle( int x, int y, int radius, int points, DWORD color ) {
 	vertex* vtx = new vertex[ points + 1 ];
-	for ( int i = 0; i <= points; i++ ) vtx[ i ] = { x + radius * cos( D3DX_PI * ( i / ( points / 2.0f ) ) ), y + radius * sin( D3DX_PI * ( i / ( points / 2.0f ) ) ), 0.0f, 1.0f, color };
+	for ( int i = 0; i <= points; i++ ) vtx[ i ] = { x + radius * cosf( D3DX_PI * ( i / ( points / 2.0f ) ) ), y + radius * sinf( D3DX_PI * ( i / ( points / 2.0f ) ) ), 0.0f, 1.0f, color };
 	this->device->SetFVF( D3DFVF_XYZRHW | D3DFVF_DIFFUSE );
 	this->device->DrawPrimitiveUP( D3DPT_TRIANGLEFAN, points, vtx, sizeof( vertex ) );
 	delete [ ] vtx;
